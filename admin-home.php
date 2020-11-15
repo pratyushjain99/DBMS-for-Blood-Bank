@@ -18,11 +18,13 @@ include('connection.php')
             <ul>
                 <li><a href="donor-red.php">Donor Registration</a></li>
                 <li><a href="donor-list.php">Donor List</a></li>
-                <li><a href="stock-blood-list.php">Stock Blood List</a></li>
+                <li><a href="stock-blood-list.php">Blood Stock Available</a></li>
             </ul><br><br><br><br><br><br>
             <ul>
-                 <li><a href="#">Out of Stock Blood List</a></li>
-                 <li><a href="exchange-blood-list.php">Exchange Blood List</a></li>
+                
+                 <li><a href="exchange-blood-list.php">Recipient Registration</a></li>
+                <li><a href="Recipient-list.php">Recipient List</a></li>
+                 
             
             </ul>
         </div>

@@ -46,7 +46,12 @@ session_start();
                     
                     <tr>
                         <td width="200px" height="50px">Sex</td>
-                        <td width="200px" height="50px"><input type="text" name="sex" placeholder="Sex"></td>
+                        <td width="200px" height="50px">
+                            <select name="sex">
+                                <option>m</option>
+                                <option>f</option>
+                            </select>
+                        </td>
                         <td width="200px" height="50px">Age</td>
                         <td width="200px" height="50px"><input type="text" name="age" placeholder="Age"></td>
                     </tr>
@@ -76,7 +81,12 @@ session_start();
                 {
                     echo "<script>alert('Donor Registration Successful')</script>";
                 }
+                else
+                {
+                     echo "<script>alert('Donor Under age')</script>";
+                }
             }
+            
             
             ?>
             </div></center>

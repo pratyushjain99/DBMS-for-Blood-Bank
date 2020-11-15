@@ -15,15 +15,15 @@ session_start();
         <div id="body">
             <br>
            
-            <h1>Donor Registration</h1><br>
+            <h1>Recipient Registration</h1><br>
             <center><div id="form">
                 <form action="" method="post">
                 <table>
                     <tr>
                         <td width="200px" height="50px">Name</td>
                         <td width="200px" height="50px"><input type="text" name="name" placeholder="Name"></td>
-                        <td width="200px" height="50px">Date of Donation</td>
-                        <td width="200px" height="50px"><input type="text" name="date_of_donation" placeholder="Date of Donation"></td>
+                        <td width="200px" height="50px">Date of Receiving</td>
+                        <td width="200px" height="50px"><input type="text" name="date_of_receiving" placeholder="Date of Receiving"></td>
                     </tr>
                     
                     <tr>
@@ -46,7 +46,12 @@ session_start();
                     
                     <tr>
                         <td width="200px" height="50px">Sex</td>
-                        <td width="200px" height="50px"><input type="text" name="sex" placeholder="Sex"></td>
+                        <td width="200px" height="50px">
+                            <select name="sex">
+                                <option>m</option>
+                                <option>f</option>
+                            </select>
+                        </td>
                         <td width="200px" height="50px">Age</td>
                         <td width="200px" height="50px"><input type="text" name="age" placeholder="Age"></td>
                     </tr>
@@ -59,22 +64,35 @@ session_start();
             if(isset($_POST['sub']))
             {
                 $name=$_POST['name'];
-                $date_of_donation=$_POST['date_of_donation'];
+                $date_of_receiving=$_POST['date_of_receiving'];
                 $blood_group=$_POST['blood_group'];
                 $address=$_POST['address'];
                 $sex=$_POST['sex'];
                 $age=$_POST['age'];
-                $q=$db->prepare("INSERT INTO blood_donor (name,date_of_donation,blood_group,address,sex,age) VALUES
-                    (:name,:date_of_donation,:blood_group,:address,:sex,:age)");
+                $q1="select * from  blood_donor where blood_group='$blood_group'";
+                $st=$db->query($q1);
+                $num_row=$st->fetch();
+                $id=$num_row['id'];
+                $delete_q="delete from blood_donor where id='$id'";
+                $st1=$db->prepare($delete_q);
+                $st1->execute();
+                
+                
+                $q=$db->prepare("INSERT INTO recipient1 (name,date_of_receiving,blood_group,address,sex,age) VALUES
+                    (:name,:date_of_receiving,:blood_group,:address,:sex,:age)");
                 $q->bindValue('name',$name);
-                $q->bindValue('date_of_donation',$date_of_donation);
+                $q->bindValue('date_of_receiving',$date_of_receiving);
                 $q->bindValue('blood_group',$blood_group);
                 $q->bindValue('address',$address);
                 $q->bindValue('sex',$sex);
                 $q->bindValue('age',$age);
                 if($q->execute())
                 {
-                    echo "<script>alert('Donor Registration Successful')</script>";
+                    echo "<script>alert('Recipient Registration Successful')</script>";
+                }
+                else
+                {
+                    echo "<script>alert('Recipient under age')</script>";
                 }
             }
             

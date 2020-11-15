@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Donor Registration</title>
+    <title>Donor List</title>
     <link rel="stylesheet" type="text/css" href="css/s1.css">
     <style type="text/css">
         td{
@@ -21,7 +21,7 @@ session_start();
         <div id="body">
             <br>
        
-            <h1>Donor Registration</h1><br>
+            <h1>Donor List</h1><br>
             <center><div id="form">
                 <table>
                     <tr>

@@ -22,7 +22,7 @@ include('connection.php')
                 </tr>
                 <tr>
                     <td width="200px" height="70px"><b>Enter Password</b></td>
-                    <td width="200px" height="70px"><input type="text" name="ps" placeholder="Enter Password" style"
+                    <td width="200px" height="70px"><input type="password" name="ps" placeholder="Enter Password" style"
                         width: 180px; height: 30px; border-radius: 10px;"></td>
                 </tr>
                 <tr>   
